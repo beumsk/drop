@@ -620,7 +620,7 @@ function checkCollisions() {
           break;
         case "GEM":
           let multiplier = Math.max(1, Math.floor(player.radius / 5));
-          score += 100 * multiplier;
+          score += 10 * multiplier;
           break;
         case "WATER":
           player.modifySize(2);
