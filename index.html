@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Drop</title>
+    <link rel="stylesheet" type="text/css" href="index.css" />
+  </head>
+  <body>
+    <div id="ui">
+      <h2 id="scoreDisplay">Score: 0</h2>
+    </div>
+    <canvas id="gameCanvas" width="400" height="700"></canvas>
+
+    <div id="gameOverUI" class="overlayUI">
+      <h1>EVAPORATED!</h1>
+      <button id="restartBtn" class="menuBtn">Restart</button>
+    </div>
+
+    <div id="pauseUI" class="overlayUI">
+      <h1>PAUSE</h1>
+      <button id="resumeBtn" class="menuBtn">Resume</button>
+    </div>
+
+    <script src="index.js"></script>
+  </body>
+</html>
