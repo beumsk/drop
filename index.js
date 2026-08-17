@@ -1,8 +1,10 @@
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 const scoreDisplay = document.getElementById("scoreDisplay");
+const startUI = document.getElementById("startUI");
 const gameOverUI = document.getElementById("gameOverUI");
 const pauseUI = document.getElementById("pauseUI");
+const startBtn = document.getElementById("startBtn");
 const restartBtn = document.getElementById("restartBtn");
 const resumeBtn = document.getElementById("resumeBtn");
 
@@ -584,6 +586,7 @@ function initGame() {
   isPaused = false;
 
   scoreDisplay.innerText = `Score: 0 | Multiplier: 3.0x`;
+  startUI.style.display = "none";
   gameOverUI.style.display = "none";
   pauseUI.style.display = "none";
 
@@ -592,6 +595,8 @@ function initGame() {
 
   gameLoop();
 }
+
+startBtn.addEventListener("click", initGame);
 
 restartBtn.addEventListener("click", initGame);
 
@@ -750,5 +755,3 @@ function gameLoop() {
   draw();
   requestAnimationFrame(gameLoop);
 }
-
-initGame();
