@@ -12,6 +12,9 @@ body {
   background-color: #111;
   color: white;
   font-family: sans-serif;
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 canvas {
@@ -99,4 +102,50 @@ canvas {
 }
 .menuBtn:active {
   transform: scale(0.95);
+}
+
+#mobile-controls {
+  position: absolute;
+  bottom: 30px;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+@media screen and (min-width: 768px) {
+  #mobile-controls {
+    display: none;
+  }
+}
+
+.control-btn {
+  pointer-events: auto;
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  color: white;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  -webkit-user-select: none;
+  outline: none;
+  backdrop-filter: blur(5px);
+  cursor: pointer;
+}
+#btn-left {
+  padding-right: 8px;
+}
+#btn-right {
+  padding-left: 8px;
+}
+
+.control-btn:active {
+  background: rgba(255, 255, 255, 0.5);
 }

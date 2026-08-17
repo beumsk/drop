@@ -540,6 +540,33 @@ window.addEventListener("keyup", (e) => {
   if (keys.hasOwnProperty(e.key)) keys[e.key] = false;
 });
 
+const btnLeft = document.getElementById("btn-left");
+const btnRight = document.getElementById("btn-right");
+
+function bindTouchButton(element, keyName) {
+  const pressOn = (e) => {
+    e.preventDefault();
+    keys[keyName] = true;
+  };
+
+  const pressOff = (e) => {
+    e.preventDefault();
+    keys[keyName] = false;
+  };
+
+  element.addEventListener("touchstart", pressOn, { passive: false });
+  element.addEventListener("touchend", pressOff, { passive: false });
+  element.addEventListener("touchcancel", pressOff, { passive: false });
+
+  // Fallbacks for mouse clicks (testing mobile controls on desktop)
+  element.addEventListener("mousedown", pressOn);
+  element.addEventListener("mouseup", pressOff);
+  element.addEventListener("mouseleave", pressOff);
+}
+
+bindTouchButton(btnLeft, "ArrowLeft");
+bindTouchButton(btnRight, "ArrowRight");
+
 function initGame() {
   player = new Player();
   entities = [];
