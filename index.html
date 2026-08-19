@@ -9,29 +9,28 @@
     <link rel="stylesheet" type="text/css" href="index.css" />
   </head>
   <body>
-    <canvas id="gameCanvas" width="320" height="560"></canvas>
-    <div id="ui">
-      <p id="scoreDisplay">Score: 0</p>
-    </div>
+    <canvas id="game-canvas" width="320" height="560"></canvas>
 
-    <div id="mobile-controls">
+    <div class="bottom-bar">
       <button id="btn-left" class="control-btn">◀</button>
+      <p id="score-display">Score: 0</p>
       <button id="btn-right" class="control-btn">▶</button>
     </div>
 
-    <div id="startUI" class="overlayUI">
+    <div id="start-ui" class="overlay-ui">
       <h1>DROP</h1>
-      <button id="startBtn" class="menuBtn">Start</button>
+      <button id="start-btn" class="menu-btn">Start</button>
     </div>
 
-    <div id="gameOverUI" class="overlayUI">
-      <h1>EVAPORATED!</h1>
-      <button id="restartBtn" class="menuBtn">Restart</button>
+    <div id="game-over-ui" class="overlay-ui">
+      <h1>GAME OVER</h1>
+      <p id="final-score"></p>
+      <button id="restart-btn" class="menu-btn">Restart</button>
     </div>
 
-    <div id="pauseUI" class="overlayUI">
+    <div id="pause-ui" class="overlay-ui">
       <h1>PAUSE</h1>
-      <button id="resumeBtn" class="menuBtn">Resume</button>
+      <button id="resume-btn" class="menu-btn">Resume</button>
     </div>
 
     <script type="module" src="/src/index.ts"></script>

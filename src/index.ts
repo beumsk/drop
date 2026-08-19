@@ -1,14 +1,14 @@
 import type { EntityType, PlayerType } from "./types";
 
 function MAIN() {
-  const canvas = document.getElementById("gameCanvas") as HTMLCanvasElement;
-  const scoreDisplay = document.getElementById("scoreDisplay");
-  const startUI = document.getElementById("startUI");
-  const gameOverUI = document.getElementById("gameOverUI");
-  const pauseUI = document.getElementById("pauseUI");
-  const startBtn = document.getElementById("startBtn");
-  const restartBtn = document.getElementById("restartBtn");
-  const resumeBtn = document.getElementById("resumeBtn");
+  const canvas = document.getElementById("game-canvas") as HTMLCanvasElement;
+  const scoreDisplay = document.getElementById("score-display");
+  const startUI = document.getElementById("start-ui");
+  const gameOverUI = document.getElementById("game-over-ui");
+  const pauseUI = document.getElementById("pause-ui");
+  const startBtn = document.getElementById("start-btn");
+  const restartBtn = document.getElementById("restart-btn");
+  const resumeBtn = document.getElementById("resume-btn");
   const btnLeft = document.getElementById("btn-left");
   const btnRight = document.getElementById("btn-right");
 
@@ -702,7 +702,11 @@ function MAIN() {
 
   function endGame() {
     isGameOver = true;
-    if (gameOverUI) gameOverUI.style.display = "flex";
+    if (gameOverUI) {
+      gameOverUI.style.display = "flex";
+      const scoreText = gameOverUI.children[1];
+      if (scoreText) scoreText.innerHTML = `Score: ${score}`;
+    }
     if (restartBtn) restartBtn.focus();
   }
 
@@ -730,7 +734,7 @@ function MAIN() {
 
     let currentMultiplier = Math.max(1, Math.floor(player.radius / 5));
     if (scoreDisplay) {
-      scoreDisplay.innerText = `Score: ${score} | Size Multiplier: ${currentMultiplier}x`;
+      scoreDisplay.innerText = `Score: ${score} \n Size Multiplier: ${currentMultiplier}x`;
     }
 
     frames++;
