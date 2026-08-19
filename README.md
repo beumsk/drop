@@ -13,9 +13,6 @@ yarn build
 ## TODO
 
 - add sound design
-- better visuals: entities, bg, favicon
-- show points at gameover
-- sequence (like tetris) to avoid having 20 entities without a single water or fire or earth
 - save points in localStorage?
 
 ## Ideas

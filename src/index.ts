@@ -597,6 +597,7 @@ function MAIN() {
     entities = [];
     score = 0;
     frames = 0;
+    entityBag = [];
 
     currentSpeedMultiplier = 1;
     progressiveSpeedMultiplier = 1;
@@ -639,22 +640,50 @@ function MAIN() {
 
   resumeBtn.addEventListener("click", togglePause);
 
+  let entityBag: EntityType["type"][] = [];
+
+  function generateEntityBag() {
+    const baseBag: EntityType["type"][] = [
+      "FIRE",
+      "FIRE",
+      "FIRE",
+      "FIRE",
+      "FIRE",
+      "FIRE",
+      "FIRE", // 35%
+      "GEM",
+      "GEM",
+      "GEM",
+      "GEM", // 20%
+      "WATER",
+      "WATER",
+      "WATER", // 15%
+      "EARTH",
+      "EARTH", // 10%
+      "AIR",
+      "SNOW",
+      "SUN",
+      "OIL", // 5% each
+    ];
+
+    // Fisher-Yates Shuffle to randomize the order of the bag
+    for (let i = baseBag.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [baseBag[i], baseBag[j]] = [baseBag[j]!, baseBag[i]!];
+    }
+
+    return baseBag;
+  }
+
   function spawnEntities() {
     let spawnRate = currentSpeedMultiplier > 1 ? 25 : 40;
 
     if (frames % spawnRate === 0) {
-      let rand = Math.random();
-      let type = "" as EntityType["type"];
+      if (entityBag.length === 0) {
+        entityBag = generateEntityBag();
+      }
 
-      if (rand < 0.2) type = "GEM";
-      else if (rand < 0.35) type = "WATER";
-      else if (rand < 0.45) type = "EARTH";
-      else if (rand < 0.5) type = "AIR";
-      else if (rand < 0.55) type = "SNOW";
-      else if (rand < 0.6) type = "SUN";
-      else if (rand < 0.65) type = "OIL";
-      else type = "FIRE";
-
+      const type = entityBag.pop() as EntityType["type"];
       entities.push(new Entity(type));
     }
   }
